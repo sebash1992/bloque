@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nueva Rutina (1/2)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <p class="section-label">🏷️ Nombre del plan</p>
+  <input
+    type="text"
+    class="input focus"
+    [(ngModel)]="name"
+    placeholder="Ej: Sinapsis Invierno"
+  />
+
+  <p class="section-label">📅 Frecuencia</p>
+  <input
+    type="text"
+    class="input"
+    [(ngModel)]="frequency"
+    placeholder="Ej: 3 veces x semana + Bonus Track"
+  />
+
+  <p class="section-label">🎨 Ícono identificador</p>
+  <div class="icon-picker">
+    <button
+      *ngFor="let ic of icons"
+      class="icon-opt"
+      [class.active]="ic === icon"
+      (click)="icon = ic"
+    >
+      {{ ic }}
+    </button>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border footer">
+  <button class="next-btn" [disabled]="!canContinue" (click)="next()">
+    Continuar a los Días →
+  </button>
+</ion-footer>

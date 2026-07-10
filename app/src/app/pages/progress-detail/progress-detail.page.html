@@ -1,0 +1,135 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/progress" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openLog()" color="primary">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="chips" *ngIf="repChips.length">
+    <button
+      *ngFor="let r of repChips"
+      class="chip"
+      [class.active]="r === selectedReps"
+      (click)="selectRep(r)"
+    >
+      {{ r }} reps
+    </button>
+  </div>
+
+  <div class="chart-card surface-card">
+    <svg *ngIf="points.length" viewBox="0 0 300 170" width="100%">
+      <g>
+        <line
+          *ngFor="let g of yLabels"
+          [attr.x1]="42"
+          [attr.y1]="g.y"
+          [attr.x2]="288"
+          [attr.y2]="g.y"
+          stroke="#334155"
+          stroke-dasharray="3"
+        />
+        <text
+          *ngFor="let g of yLabels"
+          [attr.x]="8"
+          [attr.y]="g.y + 3"
+          fill="#475569"
+          font-size="9"
+          font-family="monospace"
+        >
+          {{ g.value }} kg
+        </text>
+      </g>
+
+      <path
+        [attr.d]="path"
+        fill="none"
+        stroke="#10B981"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <g *ngFor="let p of points">
+        <circle
+          [attr.cx]="p.x"
+          [attr.cy]="p.y"
+          r="4"
+          fill="#F8FAFC"
+          stroke="#10B981"
+          stroke-width="2"
+        />
+        <text
+          [attr.x]="p.x"
+          [attr.y]="162"
+          fill="#475569"
+          font-size="9"
+          font-family="monospace"
+          text-anchor="middle"
+        >
+          {{ p.dateLabel }}
+        </text>
+      </g>
+    </svg>
+
+    <div class="chart-empty" *ngIf="!points.length">
+      <p *ngIf="repChips.length">Sin registros para {{ selectedReps }} reps.</p>
+      <p *ngIf="!repChips.length">Todavía no cargaste pesos.</p>
+      <span>Tocá <strong>+</strong> arriba para registrar un peso.</span>
+    </div>
+  </div>
+
+  <ng-container *ngIf="history.length">
+    <p class="section-label">📋 Historial para {{ selectedReps }} reps</p>
+    <div class="hist-row surface-card" *ngFor="let h of history; let i = index">
+      <span class="date">{{ h.date | date: 'dd/MM/yyyy' }}</span>
+      <strong [class.emerald]="i === 0">{{ h.weight }} kg</strong>
+    </div>
+  </ng-container>
+</ion-content>
+
+<!-- Quick log-entry sheet -->
+<ion-modal
+  [isOpen]="logSheetOpen"
+  [initialBreakpoint]="0.6"
+  [breakpoints]="[0, 0.6]"
+  (ionModalDidDismiss)="logSheetOpen = false"
+>
+  <ng-template>
+    <div class="sheet">
+      <p class="sheet-title">Registrar peso</p>
+      <p class="sheet-sub">{{ name }}</p>
+
+      <label class="field-label">Peso</label>
+      <div class="wheel">
+        <button (click)="adjustLogWeight(-2.5)">
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </button>
+        <div class="value">{{ logWeight }}<small>kg</small></div>
+        <button (click)="adjustLogWeight(2.5)">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="field-label">Repeticiones</label>
+          <input type="number" min="1" [(ngModel)]="logReps" class="input" />
+        </div>
+        <div class="col">
+          <label class="field-label">Fecha</label>
+          <input type="date" [(ngModel)]="logDate" class="input" />
+        </div>
+      </div>
+
+      <button class="confirm" (click)="saveLog()">Guardar registro</button>
+    </div>
+  </ng-template>
+</ion-modal>

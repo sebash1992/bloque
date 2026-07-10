@@ -1,0 +1,122 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Evolución y Biblioteca 📈</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-segment [(ngModel)]="view" class="segment">
+    <ion-segment-button value="ejercicios">
+      <ion-label>Ejercicios</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="bloques">
+      <ion-label>Mis Bloques</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- ===================== EJERCICIOS ===================== -->
+  <ng-container *ngIf="view === 'ejercicios'">
+    <div class="search surface-card">
+      <ion-icon name="search"></ion-icon>
+      <input
+        type="text"
+        [(ngModel)]="query"
+        placeholder="Buscar ejercicio (ej: Press plano)..."
+      />
+    </div>
+
+    <ng-container *ngFor="let g of filteredGroups">
+      <p class="section-label">{{ g.icon }} {{ g.category }}</p>
+      <button
+        *ngFor="let it of g.items"
+        class="ex-row surface-card"
+        (click)="open(it.exercise.name)"
+      >
+        <div class="info">
+          <h2>{{ it.exercise.name }}</h2>
+          <p>
+            Récord histórico:
+            <span class="emerald" *ngIf="it.record !== null">{{ it.record }} kg</span>
+            <span class="muted" *ngIf="it.record === null">sin registro</span>
+          </p>
+        </div>
+        <ion-icon name="chevron-forward"></ion-icon>
+      </button>
+    </ng-container>
+
+    <p class="empty" *ngIf="!filteredGroups.length">
+      No hay ejercicios que coincidan.
+    </p>
+  </ng-container>
+
+  <!-- ===================== MIS BLOQUES ===================== -->
+  <ng-container *ngIf="view === 'bloques'">
+    <p class="section-label">📚 Mis bloques guardados</p>
+
+    <button
+      *ngFor="let t of templates"
+      class="ex-row surface-card"
+      (click)="editBlock(t.id!)"
+    >
+      <div class="info">
+        <h2>📦 {{ t.name }}</h2>
+        <p>{{ t.series }} series · {{ t.exercises.length }} ejercicios</p>
+      </div>
+      <ion-icon
+        name="trash-outline"
+        class="trash"
+        (click)="deleteBlock(t, $event)"
+      ></ion-icon>
+    </button>
+
+    <div class="empty-blocks" *ngIf="!templates.length">
+      <p>Todavía no tenés bloques guardados.</p>
+      <span>Creá combos reutilizables (superseries, circuitos) con el botón +.</span>
+    </div>
+  </ng-container>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="onFab()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!-- Create standalone exercise sheet -->
+<ion-modal
+  [isOpen]="createOpen"
+  [initialBreakpoint]="0.55"
+  [breakpoints]="[0, 0.55]"
+  (ionModalDidDismiss)="createOpen = false"
+>
+  <ng-template>
+    <div class="sheet">
+      <p class="sheet-title">Nuevo ejercicio</p>
+      <p class="sheet-sub">Para registrar pesos fuera de la rutina</p>
+
+      <label class="field-label">Nombre</label>
+      <input
+        type="text"
+        [(ngModel)]="newName"
+        class="input"
+        placeholder="Ej: Press banca inclinado"
+      />
+
+      <label class="field-label">Categoría</label>
+      <div class="cat-options">
+        <button
+          *ngFor="let c of categories"
+          class="cat"
+          [class.active]="c === newCategory"
+          (click)="newCategory = c"
+        >
+          {{ c }}
+        </button>
+      </div>
+
+      <button class="confirm" [disabled]="!newName.trim()" (click)="saveCreate()">
+        Crear y registrar
+      </button>
+    </div>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,73 @@
+.routine-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+
+  .ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--action-success-emerald);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    margin: 0;
+  }
+  p {
+    font-size: 12px;
+    color: var(--text-workout-muted);
+    margin: 3px 0 0;
+  }
+}
+
+.day-list {
+  background: transparent;
+}
+
+.day-item {
+  --background: var(--surface-workout-card);
+  --border-radius: 12px;
+  margin-bottom: 10px;
+  --padding-start: 14px;
+
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+  }
+  p {
+    font-size: 11px;
+    color: var(--text-workout-muted);
+    margin-top: 3px;
+  }
+  .empty-day {
+    color: var(--action-success-emerald);
+    opacity: 0.8;
+  }
+}
+
+.handle {
+  font-size: 22px;
+  color: var(--text-workout-muted);
+}
+
+.add-day {
+  width: 100%;
+  height: 48px;
+  margin-top: 6px;
+  border: 1.5px dashed var(--action-success-emerald);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--action-success-emerald);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}

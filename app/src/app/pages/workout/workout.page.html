@@ -1,0 +1,134 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home" text=""></ion-back-button>
+    </ion-buttons>
+    <div class="header-progress">
+      <div class="header-top">
+        <span class="day-title">{{ dayName }}</span>
+        <span class="pct">{{ progressPct }}%</span>
+      </div>
+      <div class="bar">
+        <div class="fill" [style.width.%]="progressPct"></div>
+      </div>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="finish(false)" color="primary">Fin</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ng-container *ngFor="let block of blocks; let bi = index">
+    <div class="block-header">
+      <p class="section-label">
+        📦 {{ block.name }}
+        <ion-icon *ngIf="isBlockLocked(bi)" name="lock-closed"></ion-icon>
+      </p>
+      <button
+        *ngIf="isBlockLocked(bi)"
+        class="unlock-btn"
+        (click)="unlockBlock(bi)"
+      >
+        🔓 Desbloquear igual
+      </button>
+    </div>
+
+    <div
+      *ngFor="let vm of block.exercises"
+      class="exercise-card surface-card"
+      [class.locked]="isBlockLocked(bi)"
+      [class.completed]="isExerciseDone(vm)"
+    >
+      <div class="ex-head">
+        <div class="ex-name">
+          <span *ngIf="isExerciseDone(vm)" class="check">✓</span>
+          {{ vm.ex.icon }} {{ vm.ex.name }}
+        </div>
+        <span class="badge">{{ vm.ex.targetSeries }}S | {{ vm.ex.targetReps }}</span>
+      </div>
+
+      <p class="ex-hint" *ngIf="!isExerciseDone(vm)">
+        <ng-container *ngIf="vm.weightless">Peso corporal</ng-container>
+        <ng-container *ngIf="!vm.weightless">
+          Sugerido: {{ vm.pips[0].weight }} kg
+        </ng-container>
+      </p>
+      <div class="done-row" *ngIf="isExerciseDone(vm)">
+        <span class="ex-hint done">
+          🟢 Completado {{ vm.pips.length }} / {{ vm.pips.length }}
+        </span>
+        <button class="reopen-btn" (click)="reopenExercise(vm)">
+          ↩︎ Corregir
+        </button>
+      </div>
+
+      <!-- Time-based: single timer button -->
+      <div *ngIf="vm.ex.isTimeBased && !isExerciseDone(vm)" class="timer-row">
+        <button class="timer-btn" (click)="startTimer(vm)">
+          <ion-icon name="play-outline"></ion-icon>
+          <span *ngIf="vm.remaining === null">
+            Iniciar {{ vm.ex.targetTimeSeconds }}"
+          </span>
+          <span *ngIf="vm.remaining !== null">{{ vm.remaining }}"</span>
+        </button>
+        <div class="mini-pips">
+          <span
+            *ngFor="let p of vm.pips"
+            class="mini-pip"
+            [class.on]="p.done"
+          ></span>
+        </div>
+      </div>
+
+      <!-- Standard: series pips -->
+      <div *ngIf="!vm.ex.isTimeBased && !isExerciseDone(vm)" class="pips">
+        <button
+          *ngFor="let pip of vm.pips"
+          class="pip"
+          [class.done]="pip.done"
+          [class.focus]="!pip.done && pip.index === focusIndex(vm)"
+          (click)="togglePip(vm, pip)"
+        >
+          <span class="reps">{{ pip.repLabel }}</span>
+          <span class="wt" *ngIf="!vm.weightless">{{ pip.weight }}kg</span>
+        </button>
+      </div>
+
+      <button
+        *ngIf="!vm.weightless && !isExerciseDone(vm)"
+        class="modify-btn"
+        (click)="openWeight(vm)"
+      >
+        <ion-icon name="options-outline"></ion-icon>
+        Modificar peso
+      </button>
+    </div>
+  </ng-container>
+
+  <div class="footer-space"></div>
+</ion-content>
+
+<!-- Weight adjust bottom sheet -->
+<ion-modal
+  [isOpen]="sheetOpen"
+  [initialBreakpoint]="0.4"
+  [breakpoints]="[0, 0.4]"
+  (ionModalDidDismiss)="closeSheet()"
+>
+  <ng-template>
+    <div class="sheet">
+      <p class="sheet-label">{{ sheetLabel }}</p>
+      <div class="wheel">
+        <button (click)="adjustWeight(-2.5)">
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </button>
+        <div class="value">{{ sheetWeight }}<small>kg</small></div>
+        <button (click)="adjustWeight(2.5)">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </button>
+      </div>
+      <button class="confirm" (click)="sheetOpen = false">Confirmar</button>
+    </div>
+  </ng-template>
+</ion-modal>

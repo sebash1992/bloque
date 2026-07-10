@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 760" width="100%" height="100%">
+  <style>
+    .titulo-p { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 700; fill: #F8FAFC; }
+    .sub-p { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: bold; fill: #64748B; letter-spacing: 1px; }
+    .card-title-p { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: bold; fill: #F8FAFC; }
+    .card-desc-p { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #64748B; }
+    .nav-txt-p { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 500; fill: #64748B; text-anchor: middle; }
+    .nav-txt-active-p { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: bold; fill: #10B981; text-anchor: middle; }
+  </style>
+
+  <rect width="350" height="760" rx="36" fill="#0F172A" stroke="#334155" stroke-width="3"/>
+  
+  <g transform="translate(24, 46)">
+    <text x="0" y="20" class="titulo-p">Evolución de Cargas 📈</text>
+  </g>
+
+  <g transform="translate(24, 90)">
+    <rect width="302" height="40" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="14" y="24" font-size="14">🔍</text>
+    <text x="40" y="24" font-family="sans-serif" font-size="13" fill="#64748B">Buscar ejercicio (ej: Press plano)...</text>
+  </g>
+
+  <text x="24" y="164" class="sub-p">🏋️ TREN SUPERIOR</text>
+  
+  <g transform="translate(24, 178)">
+    <rect width="302" height="58" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="26" class="card-title-p">Press plano c/barra</text>
+    <text x="16" y="44" class="card-desc-p">Récord histórico: <tspan fill="#10B981" font-weight="bold">82.5 kg</tspan></text>
+    <text x="280" y="34" fill="#64748B" font-size="14" font-weight="bold">&gt;</text>
+  </g>
+
+  <g transform="translate(24, 248)">
+    <rect width="302" height="58" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="26" class="card-title-p">Jalón al pecho en polea alta</text>
+    <text x="16" y="44" class="card-desc-p">Récord histórico: <tspan fill="#10B981" font-weight="bold">60.0 kg</tspan></text>
+    <text x="280" y="34" fill="#64748B" font-size="14">&gt;</text>
+  </g>
+
+  <text x="24" y="342" class="sub-p">🦵 TREN INFERIOR</text>
+  
+  <g transform="translate(24, 356)">
+    <rect width="302" height="58" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="26" class="card-title-p">Sentadilla c/barra</text>
+    <text x="16" y="44" class="card-desc-p">Récord histórico: <tspan fill="#10B981" font-weight="bold">100.0 kg</tspan></text>
+    <text x="280" y="34" fill="#64748B" font-size="14">&gt;</text>
+  </g>
+
+  <g transform="translate(0, 700)">
+    <line x1="0" y1="0" x2="350" y2="0" stroke="#1E293B" stroke-width="1"/>
+    <text x="58" y="24" font-size="16">🏠</text><text x="58" y="38" class="nav-txt-p">Inicio</text>
+    <text x="175" y="24" font-size="16">🏋️</text><text x="175" y="38" class="nav-txt-p">Mi Rutina</text>
+    <text x="292" y="24" font-size="16">📊</text><text x="292" y="38" class="nav-txt-active-p">Progreso</text>
+  </g>
+</svg>

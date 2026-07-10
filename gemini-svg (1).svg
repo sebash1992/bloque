@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="100%" height="100%">
+  <style>
+    .titulo { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #CBD5E1; letter-spacing: 0.5px; }
+    .sub { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: bold; fill: #64748B; letter-spacing: 1px; }
+    .card-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: bold; fill: #F8FAFC; }
+    .card-desc { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #64748B; }
+    .nav-txt { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 500; fill: #64748B; text-anchor: middle; }
+    .nav-txt-active { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: bold; fill: #10B981; text-anchor: middle; }
+    .badge-txt { font-family: monospace; font-size: 10px; fill: #94A3B8; text-anchor: middle; }
+  </style>
+
+  <g transform="translate(40, 24)">
+    <rect width="350" height="760" rx="36" fill="#0F172A" stroke="#334155" stroke-width="3"/>
+    
+    <text x="175" y="50" class="titulo" text-anchor="middle">MIS RUTINAS</text>
+    <line x1="24" y1="66" x2="326" y2="66" stroke="#1E293B" stroke-width="2"/>
+
+    <text x="24" y="100" class="sub">⚡ RUTINA ACTIVA</text>
+    
+    <g transform="translate(24, 116)">
+      <rect width="302" height="84" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+      <text x="16" y="32" class="card-title">Rutina Sinapsis Gym</text>
+      <text x="16" y="52" class="card-desc">Frecuencia: 3 veces x sem + Bonus Track</text>
+      <rect x="16" y="60" width="85" height="16" rx="4" fill="#10B981" opacity="0.1"/>
+      <text x="22" y="72" font-family="sans-serif" font-size="9" font-weight="bold" fill="#10B981">EN PROGRESO</text>
+      <text x="286" y="47" fill="#10B981" font-size="16" font-weight="bold">&gt;</text>
+    </g>
+
+    <text x="24" y="240" class="sub">⏳ HISTORIAL ANTERIOR</text>
+
+    <g transform="translate(24, 256)" opacity="0.6">
+      <rect width="302" height="70" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="30" class="card-title">Acondicionamiento Inicial</text>
+      <text x="16" y="48" class="card-desc">Finalizada el 15/05/2026</text>
+      <text x="286" y="40" fill="#64748B" font-size="16">&gt;</text>
+    </g>
+
+    <g transform="translate(24, 340)" opacity="0.6">
+      <rect width="302" height="70" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="30" class="card-title">Fuerza Base - Adaptación</text>
+      <text x="16" y="48" class="card-desc">Finalizada el 28/03/2026</text>
+      <text x="286" y="40" fill="#64748B" font-size="16">&gt;</text>
+    </g>
+
+    <g transform="translate(0, 700)">
+      <line x1="0" y1="0" x2="350" y2="0" stroke="#1E293B" stroke-width="1"/>
+      <text x="58" y="24" font-size="16">🏠</text><text x="58" y="38" class="nav-txt">Inicio</text>
+      <text x="175" y="24" font-size="16">🏋️</text><text x="175" y="38" class="nav-txt-active">Mi Rutina</text>
+      <text x="292" y="24" font-size="16">📊</text><text x="292" y="38" class="nav-txt">Progreso</text>
+    </g>
+  </g>
+
+  <g transform="translate(425, 24)">
+    <rect width="350" height="760" rx="36" fill="#0F172A" stroke="#334155" stroke-width="3"/>
+    
+    <text x="24" y="52" fill="#64748B" font-size="18" font-weight="bold" cursor="pointer">←</text>
+    <text x="175" y="50" class="titulo" text-anchor="middle">RUTINA SINAPSIS</text>
+    
+    <line x1="24" y1="66" x2="326" y2="66" stroke="#1E293B" stroke-width="2"/>
+    <text x="24" y="100" class="sub">📅 DISTRIBUCIÓN SEMANAL</text>
+
+    <g transform="translate(24, 116)">
+      <rect width="302" height="76" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+      <text x="16" y="30" class="card-title">DÍA 1: Tren Superior + Zona Media</text>
+      <text x="16" y="50" class="card-desc">⏱️ Movilidad + 4 Bloques de fuerza</text>
+      <text x="286" y="43" fill="#10B981" font-size="16" font-weight="bold">&gt;</text>
+    </g>
+
+    <g transform="translate(24, 206)">
+      <rect width="302" height="76" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="30" class="card-title">DÍA 2: Full Body</text>
+      <text x="16" y="50" class="card-desc">⏱️ Movilidad + 4 Bloques enfocados</text>
+      <text x="286" y="43" fill="#64748B" font-size="16">&gt;</text>
+    </g>
+
+    <g transform="translate(24, 296)">
+      <rect width="302" height="76" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="30" class="card-title">DÍA 3: Tren Inferior + Zona Media</text>
+      <text x="16" y="50" class="card-desc">⏱️ Enfoque Cadera y Piernas</text>
+      <text x="286" y="43" fill="#64748B" font-size="16">&gt;</text>
+    </g>
+
+    <g transform="translate(24, 386)">
+      <rect width="302" height="76" rx="14" fill="#1E293B" stroke="#10B981" stroke-dasharray="4" stroke-width="1.5"/>
+      <text x="16" y="30" class="card-title" fill="#10B981">🔥 DÍA 4: BONUS TRACK!!</text>
+      <text x="16" y="50" class="card-desc">⏱️ Brazos, Espalda y Búlgaras opcionales</text>
+      <text x="286" y="43" fill="#10B981" font-size="16" font-weight="bold">&gt;</text>
+    </g>
+
+    <g transform="translate(0, 700)">
+      <line x1="0" y1="0" x2="350" y2="0" stroke="#1E293B" stroke-width="1"/>
+      <text x="58" y="24" font-size="16">🏠</text><text x="58" y="38" class="nav-txt">Inicio</text>
+      <text x="175" y="24" font-size="16">🏋️</text><text x="175" y="38" class="nav-txt-active">Mi Rutina</text>
+      <text x="292" y="24" font-size="16">📊</text><text x="292" y="38" class="nav-txt">Progreso</text>
+    </g>
+  </g>
+
+  <g transform="translate(810, 24)">
+    <rect width="350" height="760" rx="36" fill="#0F172A" stroke="#334155" stroke-width="3"/>
+    
+    <text x="24" y="52" fill="#64748B" font-size="18" font-weight="bold" cursor="pointer">←</text>
+    <text x="175" y="50" class="titulo" text-anchor="middle">DÍA 1: TREN SUPERIOR</text>
+    <text x="326" y="50" fill="#10B981" font-family="monospace" font-size="12" font-weight="bold" text-anchor="end">58%</text>
+    
+    <rect x="24" y="66" width="302" height="4" rx="2" fill="#1E293B"/>
+    <rect x="24" y="66" width="175" height="4" rx="2" fill="#10B981"/>
+    
+    <text x="24" y="102" class="sub">📦 BLOQUE 1</text>
+    
+    <g transform="translate(24, 118)">
+      <rect width="302" height="150" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+      <text x="14" y="26" class="card-title" font-size="14">🏋️ Press plano c/barra</text>
+      <text x="14" y="42" class="card-desc" font-size="10">⏱️ Último: 70kg / 75kg / 80kg / 82kg</text>
+      
+      <rect x="218" y="12" width="70" height="18" rx="5" fill="#0F172A"/>
+      <text x="253" y="24" class="badge-txt" font-size="9">4S | 10-8-6-4</text>
+      
+      <rect x="14" y="60" width="60" height="36" rx="8" fill="#10B981"/>
+      <text x="44" y="76" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">10</text>
+      <text x="44" y="87" font-family="sans-serif" font-size="8" font-weight="bold" fill="#0F172A" text-anchor="middle" opacity="0.8">70kg</text>
+      <rect x="84" y="60" width="60" height="36" rx="8" fill="#10B981"/>
+      <text x="144" y="76" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">8</text>
+      <rect x="154" y="60" width="60" height="36" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="2"/>
+      <text x="184" y="76" font-family="sans-serif" font-size="12" font-weight="bold" fill="#10B981" text-anchor="middle">6</text>
+      <rect x="224" y="60" width="60" height="36" rx="8" fill="#0F172A"/>
+      <text x="254" y="76" font-family="sans-serif" font-size="12" fill="#64748B" text-anchor="middle">4</text>
+      
+      <rect x="14" y="110" width="274" height="24" rx="8" fill="#0F172A"/>
+      <text x="151" y="125" fill="#64748B" font-family="sans-serif" font-size="10" font-weight="medium" text-anchor="middle">⚖️ Modificar peso o repeticiones</text>
+    </g>
+
+    <g transform="translate(24, 282)" opacity="0.5">
+      <rect width="302" height="64" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+      <text x="14" y="28" class="card-title" font-size="14">✓ 🪱 Bicho muerto</text>
+      <text x="14" y="46" fill="#10B981" font-family="sans-serif" font-size="10" font-weight="semibold">🟢 Completado 4 / 4</text>
+    </g>
+
+    <g transform="translate(24, 360)">
+      <rect width="302" height="64" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="28" class="card-title" font-size="14" fill="#94A3B8">💪 Bicep concentrado</text>
+      <text x="14" y="46" class="card-desc" font-size="10">Sugerido: 12.5 kg</text>
+    </g>
+
+    <g transform="translate(0, 700)">
+      <line x1="0" y1="0" x2="350" y2="0" stroke="#1E293B" stroke-width="1"/>
+      <text x="58" y="24" font-size="16">🏠</text><text x="58" y="38" class="nav-txt">Inicio</text>
+      <text x="175" y="24" font-size="16">🏋️</text><text x="175" y="38" class="nav-txt-active">Mi Rutina</text>
+      <text x="292" y="24" font-size="16">📊</text><text x="292" y="38" class="nav-txt">Progreso</text>
+    </g>
+  </g>
+</svg>

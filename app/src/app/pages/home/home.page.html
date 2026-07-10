@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <header class="greeting">
+    <h1>¡Hola! 👋</h1>
+    <p>Listo para tu sesión de hoy.</p>
+  </header>
+
+  <p class="section-label">📅 Esta semana</p>
+  <div class="week-tracker surface-card">
+    <div
+      *ngFor="let b of week"
+      class="bubble"
+      [class.done]="b.state === 'done'"
+      [class.today]="b.state === 'today'"
+    >
+      <div class="circle">
+        <span *ngIf="b.state === 'done'; else letter">
+          <ion-icon name="checkmark"></ion-icon>
+        </span>
+        <ng-template #letter>{{ b.label }}</ng-template>
+      </div>
+      <small *ngIf="b.state === 'today'">HOY</small>
+    </div>
+  </div>
+
+  <ng-container *ngIf="nextDay">
+    <p class="section-label">🏋️ Próximo entrenamiento</p>
+    <div class="quick-start surface-card emerald-border">
+      <h2>{{ nextDay.name }}</h2>
+      <p class="hint">Tu rutina activa: {{ routine?.name }}</p>
+      <button class="start-btn" (click)="start()">
+        <ion-icon name="rocket-outline"></ion-icon>
+        EMPEZAR SESIÓN
+      </button>
+    </div>
+  </ng-container>
+
+  <p class="section-label">📊 Logros de la temporada</p>
+  <div class="stats-row">
+    <div class="stat surface-card">
+      <div class="stat-value emerald">{{ sessionsCount }}</div>
+      <div class="stat-label">Sesiones <ion-icon name="flame"></ion-icon></div>
+    </div>
+    <div class="stat surface-card">
+      <div class="stat-value">{{ volumeTons }} ton</div>
+      <div class="stat-label">
+        Levantadas <ion-icon name="trending-up"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="pr-card surface-card" *ngIf="pr">
+    <div class="pr-head">
+      <span><ion-icon name="trophy"></ion-icon> Último récord</span>
+      <strong class="emerald">{{ pr.weight }} kg</strong>
+    </div>
+    <p class="hint">En {{ pr.name }} ({{ pr.reps }} reps)</p>
+  </div>
+  <div class="pr-card surface-card" *ngIf="!pr">
+    <p class="hint">
+      Todavía no hay récords. ¡Arrancá tu primera sesión para empezar a registrar!
+    </p>
+  </div>
+</ion-content>

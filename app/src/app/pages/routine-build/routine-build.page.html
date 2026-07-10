@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Estructura (2/2)</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="finalize()">
+        <strong>Finalizar</strong>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="routine-head">
+    <span class="ic">{{ routine?.icon }}</span>
+    <div>
+      <h1>{{ routine?.name }}</h1>
+      <p>{{ routine?.frequency }}</p>
+    </div>
+  </div>
+
+  <p class="section-label">🗓️ Días de entrenamiento</p>
+
+  <ion-list class="day-list" lines="none">
+    <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
+      <ion-item-sliding *ngFor="let row of rows" #slide>
+        <ion-item class="day-item" button (click)="openDay(row)">
+          <ion-reorder slot="end">
+            <ion-icon name="reorder-three-outline" class="handle"></ion-icon>
+          </ion-reorder>
+          <ion-label>
+            <h2>{{ row.day.name }}</h2>
+            <p *ngIf="row.blockCount > 0">
+              {{ row.blockCount }} bloque{{ row.blockCount === 1 ? '' : 's' }} • Editar
+            </p>
+            <p *ngIf="row.blockCount === 0" class="empty-day">
+              Vacío • Tocá para diseñar
+            </p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteDay(row, slide)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-reorder-group>
+  </ion-list>
+
+  <button class="add-day" (click)="addDay()">+ Añadir otro Día</button>
+</ion-content>

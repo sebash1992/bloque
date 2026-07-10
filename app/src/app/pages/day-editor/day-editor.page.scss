@@ -1,0 +1,128 @@
+.day-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-workout-main);
+  margin: 4px 0 8px;
+}
+
+.block-card {
+  padding: 14px;
+  margin-bottom: 10px;
+
+  .block-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .block-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+  }
+  .block-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    .del {
+      font-size: 18px;
+      color: #ef4444;
+    }
+    .handle {
+      font-size: 22px;
+      color: var(--text-workout-muted);
+    }
+  }
+  .ex-line {
+    font-size: 12px;
+    color: var(--text-workout-details);
+    padding: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    .reps {
+      font-family: monospace;
+      color: var(--text-workout-muted);
+      font-size: 11px;
+    }
+  }
+}
+
+.empty-canvas {
+  text-align: center;
+  color: var(--text-workout-muted);
+  font-size: 13px;
+  padding: 20px;
+  border: 1.5px dashed #334155;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.library-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 26px 0 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--surface-workout-card);
+}
+
+.new-block-btn {
+  background: transparent;
+  border: 1px solid var(--action-success-emerald);
+  color: var(--action-success-emerald);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lib-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+
+  .lib-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+  }
+  .lib-meta {
+    font-size: 11px;
+    color: var(--text-workout-muted);
+    margin-top: 3px;
+  }
+}
+
+.clone-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
+  background: var(--action-success-emerald);
+  color: var(--bg-app-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  ion-icon {
+    font-size: 22px;
+  }
+}
+
+.empty-lib {
+  text-align: center;
+  color: var(--text-workout-muted);
+  font-size: 12px;
+  padding: 16px;
+  strong {
+    color: var(--action-success-emerald);
+  }
+}
+
+.footer-space {
+  height: 24px;
+}

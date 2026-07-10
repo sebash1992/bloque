@@ -1,0 +1,76 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Día</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="renameDay()">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h1 class="day-name">{{ day?.name }}</h1>
+
+  <!-- ===================== TU DÍA ===================== -->
+  <p class="section-label">📦 Bloques del día</p>
+
+  <ion-reorder-group
+    [disabled]="false"
+    (ionItemReorder)="handleReorder($any($event))"
+  >
+    <div class="block-card surface-card" *ngFor="let b of blocks">
+      <div class="block-head">
+        <div class="block-title">📦 {{ b.name }}</div>
+        <div class="block-actions">
+          <ion-icon
+            name="trash-outline"
+            class="del"
+            (click)="deleteBlock(b)"
+          ></ion-icon>
+          <ion-reorder>
+            <ion-icon name="reorder-three-outline" class="handle"></ion-icon>
+          </ion-reorder>
+        </div>
+      </div>
+      <div class="ex-line" *ngFor="let ex of b.exercises">
+        {{ ex.icon }} {{ ex.name }}
+        <span class="reps">{{ ex.targetReps }}</span>
+      </div>
+    </div>
+  </ion-reorder-group>
+
+  <div class="empty-canvas" *ngIf="!blocks.length">
+    Tu día está vacío. Agregá bloques desde tu biblioteca 👇
+  </div>
+
+  <!-- ===================== TU BIBLIOTECA ===================== -->
+  <div class="library-head">
+    <p class="section-label" style="margin:0">📚 Tu biblioteca</p>
+    <button class="new-block-btn" (click)="newBlock()">+ Nuevo Bloque</button>
+  </div>
+
+  <div
+    *ngFor="let t of templates"
+    class="lib-card surface-card"
+  >
+    <div class="lib-info">
+      <div class="lib-name">📦 {{ t.name }}</div>
+      <div class="lib-meta">{{ t.series }} series · {{ t.exercises.length }} ejercicios</div>
+    </div>
+    <button class="clone-btn" (click)="cloneTemplate(t)">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </div>
+
+  <div class="empty-lib" *ngIf="!templates.length">
+    No tenés bloques guardados. Tocá <strong>+ Nuevo Bloque</strong> para crear el primero.
+  </div>
+
+  <div class="footer-space"></div>
+</ion-content>

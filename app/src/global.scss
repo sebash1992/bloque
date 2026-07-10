@@ -1,0 +1,79 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+@import '@ionic/angular/css/palettes/dark.always.css';
+
+/* -------------------------------------------------------------------------- */
+/* Bloque · shared component styles                                            */
+/* -------------------------------------------------------------------------- */
+
+ion-content {
+  --background: var(--bg-app-dark);
+}
+
+/* Header & tab bar: blend with the app background (Slate 900) like the
+   mockups, instead of Ionic's near-black dark-palette default. A thin
+   Slate 800 divider keeps them subtly separated from the content. */
+ion-toolbar {
+  --background: var(--bg-app-dark);
+  --color: var(--text-workout-main);
+  --border-color: var(--surface-workout-card);
+  --border-width: 0;
+}
+
+ion-tab-bar {
+  --background: var(--bg-app-dark);
+  --color: var(--text-workout-muted);
+  --color-selected: var(--action-success-emerald);
+  border-top: 1px solid var(--surface-workout-card);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-workout-muted);
+  text-transform: uppercase;
+  margin: 20px 0 10px;
+}
+
+.surface-card {
+  background: var(--surface-workout-card);
+  border-radius: var(--radius-workout-card);
+  border: 1px solid #334155;
+}
+
+.emerald-border {
+  border: 2px solid var(--action-success-emerald) !important;
+}

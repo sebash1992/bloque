@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Mis Rutinas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="newRoutine()">
+        <ion-icon slot="start" name="add"></ion-icon>
+        <strong>Nueva</strong>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ng-container *ngIf="active">
+    <p class="section-label">⚡ Rutina activa</p>
+    <button class="routine-card surface-card emerald-border" (click)="open(active)">
+      <div class="info">
+        <h2>{{ active.name }}</h2>
+        <p>Frecuencia: {{ active.frequency }}</p>
+        <span class="tag">EN PROGRESO</span>
+      </div>
+      <ion-icon name="chevron-forward" class="emerald"></ion-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="history.length">
+    <p class="section-label">⏳ Historial anterior</p>
+    <button
+      *ngFor="let r of history"
+      class="routine-card surface-card muted"
+      (click)="open(r)"
+    >
+      <div class="info">
+        <h2>{{ r.name }}</h2>
+        <p *ngIf="r.finishedAt">
+          Finalizada el {{ r.finishedAt | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </button>
+  </ng-container>
+</ion-content>

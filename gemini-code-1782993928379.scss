@@ -1,0 +1,23 @@
+// src/theme/workout-theme.scss
+
+:root {
+  /* --- WORKOUT APP BRAND PALETTE --- */
+  --bg-app-dark: #0F172A;          // Slate 900 (Fondo profundo de la app)
+  --surface-workout-card: #1E293B; // Slate 800 (Fondo para bloques y ejercicios)
+  --surface-input-search: #0F172A; // Buscador local
+  
+  /* --- ACCENT & STATES --- */
+  --action-success-emerald: #10B981; // Verde esmeralda para series completadas y botones
+  --action-success-hover: #059669;   // Esmeralda oscuro para clicks
+  
+  /* --- TYPOGRAPHY HIGH CONTRAST --- */
+  --text-workout-main: #F8FAFC;     // Blanco Slate 50 (Nombres de ejercicios)
+  --text-workout-details: #94A3B8;  // Gris Slate 400 (Historiales y sugerencias)
+  --text-workout-muted: #64748B;    // Gris Slate 500 (Series inactivas o pips pendientes)
+
+  /* --- SHAPE TOKENS --- */
+  --radius-workout-card: 16px;      // Bordes redondeados para el look de las tarjetas
+  --radius-workout-button: 10px;    // Botones de las series (Pips)
+  
+  --workout-transition: all 0.2s ease-in-out;
+}

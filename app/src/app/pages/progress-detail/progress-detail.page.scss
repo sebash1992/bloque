@@ -1,0 +1,162 @@
+.chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 6px 14px;
+  border-radius: 13px;
+  border: none;
+  background: var(--surface-workout-card);
+  color: var(--text-workout-muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.active {
+    background: var(--action-success-emerald);
+    color: var(--bg-app-dark);
+  }
+}
+
+.chart-card {
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.chart-empty {
+  text-align: center;
+  padding: 30px 12px;
+  p {
+    color: var(--text-workout-details);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  span {
+    color: var(--text-workout-muted);
+    font-size: 11px;
+  }
+  strong {
+    color: var(--action-success-emerald);
+  }
+}
+
+/* Quick log sheet */
+.sheet {
+  padding: 22px 20px;
+  text-align: center;
+
+  .sheet-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    margin: 0;
+  }
+  .sheet-sub {
+    font-size: 12px;
+    color: var(--text-workout-muted);
+    margin: 4px 0 18px;
+  }
+}
+
+.field-label {
+  display: block;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-workout-muted);
+  margin-bottom: 8px;
+}
+
+.wheel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  button {
+    background: none;
+    border: none;
+    color: var(--action-success-emerald);
+    cursor: pointer;
+    ion-icon {
+      font-size: 40px;
+    }
+  }
+
+  .value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    min-width: 110px;
+    small {
+      font-size: 15px;
+      color: var(--text-workout-muted);
+      margin-left: 4px;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  .col {
+    flex: 1;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--radius-workout-button);
+  background: var(--bg-app-dark);
+  border: 1px solid #334155;
+  color: var(--text-workout-main);
+  font-size: 15px;
+  padding: 0 12px;
+  outline: none;
+  &:focus {
+    border-color: var(--action-success-emerald);
+  }
+}
+
+.confirm {
+  margin-top: 24px;
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-workout-button);
+  background: var(--action-success-emerald);
+  color: var(--bg-app-dark);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hist-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  margin-bottom: 8px;
+
+  .date {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+  strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-workout-details);
+  }
+  strong.emerald {
+    color: var(--action-success-emerald);
+  }
+}

@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/routines" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ routine?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <p class="section-label">📅 Distribución semanal</p>
+
+  <button
+    *ngFor="let day of days"
+    class="day-card surface-card"
+    [class.bonus]="isBonus(day)"
+    (click)="open(day)"
+  >
+    <div class="info">
+      <h2 [class.emerald]="isBonus(day)">
+        <span *ngIf="isBonus(day)">🔥 </span>{{ day.name }}
+      </h2>
+      <p>⏱️ Movilidad + bloques de fuerza</p>
+    </div>
+    <ion-icon name="chevron-forward" [class.emerald]="isBonus(day)"></ion-icon>
+  </button>
+</ion-content>

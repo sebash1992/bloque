@@ -1,0 +1,119 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!canSave" (click)="save()" color="primary">
+        <strong>Guardar</strong>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <p class="section-label">📛 Nombre del bloque (biblioteca)</p>
+  <input
+    type="text"
+    class="input"
+    [(ngModel)]="name"
+    placeholder="Ej: Bloque Fuerza Pecho/Bíceps"
+  />
+
+  <p class="section-label">🔄 Series del circuito</p>
+  <div class="series-row">
+    <div class="stepper">
+      <button (click)="adjustSeries(-1)">
+        <ion-icon name="remove-circle-outline"></ion-icon>
+      </button>
+      <span class="series-value">{{ series }}</span>
+      <button (click)="adjustSeries(1)">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <span class="series-hint">vueltas / series por ejercicio</span>
+  </div>
+
+  <p class="section-label">🏋️ Ejercicios del bloque</p>
+
+  <div
+    *ngFor="let ex of exercises; let i = index"
+    class="ex-item surface-card"
+  >
+    <div class="ex-info">
+      <span class="ex-name">{{ i + 1 }}. {{ ex.icon }} {{ ex.name }}</span>
+      <span class="ex-reps">Reps: {{ ex.reps }}</span>
+    </div>
+    <button class="remove" (click)="removeExercise(i)">✕</button>
+  </div>
+
+  <p class="empty-hint" *ngIf="!exercises.length">
+    Todavía no agregaste ejercicios.
+  </p>
+
+  <button class="link-btn" (click)="openAdd()">+ Vincular Ejercicio</button>
+</ion-content>
+
+<!-- Add-exercise sheet -->
+<ion-modal
+  [isOpen]="addOpen"
+  [initialBreakpoint]="0.85"
+  [breakpoints]="[0, 0.85]"
+  (ionModalDidDismiss)="addOpen = false"
+>
+  <ng-template>
+    <div class="sheet">
+      <p class="sheet-title">Vincular ejercicio</p>
+
+      <label class="field-label">Nombre (buscá o escribí uno nuevo)</label>
+      <div class="search-input">
+        <ion-icon name="search"></ion-icon>
+        <input
+          type="text"
+          [(ngModel)]="searchName"
+          (ngModelChange)="onSearchInput()"
+          placeholder="Ej: Press plano c/barra"
+        />
+      </div>
+
+      <div class="suggestions" *ngIf="suggestions.length">
+        <button
+          *ngFor="let s of suggestions"
+          class="suggestion"
+          [class.active]="s.name === searchName"
+          (click)="pick(s)"
+        >
+          {{ s.icon }} {{ s.name }}
+          <small>{{ s.category }}</small>
+        </button>
+      </div>
+
+      <label class="field-label">Repeticiones</label>
+      <input
+        type="text"
+        class="input"
+        [(ngModel)]="newReps"
+        placeholder='Ej: 10-8-6-4  ·  12  ·  8/8  ·  30"'
+      />
+
+      <label class="field-label">Categoría</label>
+      <div class="cat-options">
+        <button
+          *ngFor="let c of categories"
+          class="cat"
+          [class.active]="c === newCategory"
+          (click)="newCategory = c"
+        >
+          {{ c }}
+        </button>
+      </div>
+
+      <button class="confirm" [disabled]="!canAdd" (click)="confirmAdd()">
+        Agregar al bloque
+      </button>
+    </div>
+  </ng-template>
+</ion-modal>

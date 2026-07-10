@@ -1,0 +1,151 @@
+.greeting {
+  // Push below the device status bar / notch (Home has no ion-toolbar).
+  margin-top: calc(env(safe-area-inset-top) + 12px);
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    margin: 0;
+  }
+  p {
+    font-size: 13px;
+    color: var(--text-workout-muted);
+    margin: 4px 0 0;
+  }
+}
+
+.week-tracker {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 14px 8px;
+}
+
+.bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  .circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-workout-muted);
+    background: var(--bg-app-dark);
+    border: 1px solid #334155;
+  }
+
+  small {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--action-success-emerald);
+  }
+
+  &.done .circle {
+    background: var(--action-success-emerald);
+    color: var(--bg-app-dark);
+    border-color: var(--action-success-emerald);
+  }
+
+  &.today .circle {
+    background: var(--bg-app-dark);
+    color: var(--action-success-emerald);
+    border: 2px solid var(--action-success-emerald);
+  }
+}
+
+.quick-start {
+  padding: 18px;
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    margin: 0;
+  }
+  .hint {
+    font-size: 12px;
+    color: var(--text-workout-muted);
+    margin: 6px 0 16px;
+  }
+}
+
+.start-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-workout-button);
+  background: var(--action-success-emerald);
+  color: var(--bg-app-dark);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  ion-icon {
+    font-size: 18px;
+  }
+  &:active {
+    background: var(--action-success-hover);
+  }
+}
+
+.stats-row {
+  display: flex;
+  gap: 12px;
+}
+
+.stat {
+  flex: 1;
+  padding: 14px;
+  .stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+  }
+  .stat-value.emerald {
+    color: var(--action-success-emerald);
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-workout-details);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+  }
+}
+
+.pr-card {
+  padding: 14px 16px;
+  margin-top: 12px;
+  .pr-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+  .hint {
+    font-size: 11px;
+    color: var(--text-workout-muted);
+    margin: 6px 0 0;
+  }
+}
+
+.emerald {
+  color: var(--action-success-emerald);
+}

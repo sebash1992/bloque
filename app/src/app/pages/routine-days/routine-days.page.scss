@@ -1,0 +1,39 @@
+.day-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: var(--text-workout-main);
+
+  &.bonus {
+    border: 1.5px dashed var(--action-success-emerald);
+  }
+
+  .info {
+    h2 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+    }
+    h2.emerald {
+      color: var(--action-success-emerald);
+    }
+    p {
+      font-size: 12px;
+      color: var(--text-workout-muted);
+      margin: 5px 0 0;
+    }
+  }
+
+  ion-icon {
+    font-size: 20px;
+    color: var(--text-workout-muted);
+  }
+  ion-icon.emerald {
+    color: var(--action-success-emerald);
+  }
+}
