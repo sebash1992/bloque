@@ -1,0 +1,79 @@
+.sheet {
+  padding: 26px 22px;
+  text-align: center;
+
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-workout-main);
+    margin: 0 0 8px;
+  }
+  .sub {
+    font-size: 12px;
+    color: var(--text-workout-details);
+    margin: 0 auto 22px;
+    max-width: 300px;
+    line-height: 1.5;
+  }
+}
+
+/* Shared button shape */
+.apple-btn,
+.google-btn {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.55;
+  }
+  span {
+    line-height: 1;
+  }
+}
+
+/* Official Sign in with Apple — black variant */
+.apple-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+
+  .apple-logo {
+    width: 17px;
+    height: 20px;
+    margin-top: -2px; /* optical centering of the mark */
+  }
+}
+
+/* Google-branded button — light variant */
+.google-btn {
+  background: #fff;
+  color: #1f1f1f;
+  border: 1px solid #dadce0;
+
+  .google-logo {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.offline {
+  width: 100%;
+  margin-top: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-workout-muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px;
+}

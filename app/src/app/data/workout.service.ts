@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { db } from './db';
 import { seedIfEmpty } from './seed';
 import {
+  SharedBlock,
+  SharedDay,
+  SharedRoutine,
+} from './community.service';
+import {
   Block,
   BlockTemplate,
   BlockTemplateExercise,
@@ -630,6 +635,105 @@ export class WorkoutService {
         });
       }
     });
+  }
+
+  /**
+   * Clone a shared routine (plain tree) into the local DB as an available
+   * (non-active) routine. Reused by the community import flow.
+   */
+  async importRoutineTree(shared: SharedRoutine): Promise<number> {
+    await this.ready();
+    return db.transaction(
+      'rw',
+      db.routines,
+      db.days,
+      db.blocks,
+      db.exercises,
+      async () => {
+        const routineId = await db.routines.add({
+          name: shared.name,
+          frequency: shared.frequency,
+          icon: shared.icon,
+          isActive: false,
+          draft: false,
+          createdAt: Date.now(),
+          finishedAt: null,
+        });
+        for (let d = 0; d < shared.days.length; d++) {
+          const day = shared.days[d];
+          const dayId = await db.days.add({ routineId, name: day.name, order: d });
+          for (let b = 0; b < day.blocks.length; b++) {
+            const block = day.blocks[b];
+            const blockId = await db.blocks.add({
+              dayId,
+              name: block.name,
+              order: b,
+            });
+            for (let e = 0; e < block.exercises.length; e++) {
+              const ex = block.exercises[e];
+              await db.exercises.add({
+                blockId,
+                name: ex.name,
+                order: e,
+                category: ex.category,
+                icon: ex.icon,
+                targetSeries: block.series,
+                targetReps: ex.reps,
+                isTimeBased: ex.isTimeBased,
+                targetTimeSeconds: ex.targetTimeSeconds,
+              });
+            }
+          }
+        }
+        return routineId;
+      }
+    );
+  }
+
+  /** Export a local routine to a plain transferable tree (for sharing). */
+  async exportRoutineTree(routineId: number): Promise<SharedRoutine | null> {
+    await this.ready();
+    const routine = await db.routines.get(routineId);
+    if (!routine) {
+      return null;
+    }
+    const days = await db.days
+      .where('routineId')
+      .equals(routineId)
+      .sortBy('order');
+    const sharedDays: SharedDay[] = [];
+    for (const day of days) {
+      const blocks = await db.blocks
+        .where('dayId')
+        .equals(day.id!)
+        .sortBy('order');
+      const sharedBlocks: SharedBlock[] = [];
+      for (const block of blocks) {
+        const exercises = await db.exercises
+          .where('blockId')
+          .equals(block.id!)
+          .sortBy('order');
+        sharedBlocks.push({
+          name: block.name,
+          series: exercises[0]?.targetSeries ?? 3,
+          exercises: exercises.map((e) => ({
+            name: e.name,
+            reps: e.targetReps,
+            category: e.category,
+            icon: e.icon,
+            isTimeBased: e.isTimeBased,
+            targetTimeSeconds: e.targetTimeSeconds,
+          })),
+        });
+      }
+      sharedDays.push({ name: day.name, blocks: sharedBlocks });
+    }
+    return {
+      name: routine.name,
+      icon: routine.icon,
+      frequency: routine.frequency,
+      days: sharedDays,
+    };
   }
 
   async deleteBlock(blockId: number): Promise<void> {

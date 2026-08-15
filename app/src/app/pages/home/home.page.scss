@@ -1,6 +1,10 @@
 .greeting {
   // Push below the device status bar / notch (Home has no ion-toolbar).
   margin-top: calc(env(safe-area-inset-top) + 12px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
   h1 {
     font-size: 22px;
     font-weight: 700;
@@ -11,6 +15,29 @@
     font-size: 13px;
     color: var(--text-workout-muted);
     margin: 4px 0 0;
+  }
+}
+
+.profile-btn {
+  flex-shrink: 0;
+  background: var(--surface-workout-card);
+  border: 1px solid #334155;
+  border-radius: 20px;
+  min-height: 36px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  ion-icon {
+    font-size: 24px;
+    color: var(--text-workout-details);
+  }
+  .username {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--action-success-emerald);
+    font-family: monospace;
   }
 }
 

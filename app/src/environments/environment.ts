@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Supabase → Project Settings → API. The anon/publishable key is safe to
+  // ship in the client (protected by RLS). NEVER put the service_role key here.
+  supabaseUrl: 'https://ktulcczkkdygrdeznunq.supabase.co',
+  supabaseAnonKey:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0dWxjY3pra2R5Z3JkZXpudW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzNDU3OTUsImV4cCI6MjEwMDkyMTc5NX0.bV7q9ib5EEz59V9BgBR5Dgmvos3a2mj0o7er3DsThWM',
 };
 
 /*

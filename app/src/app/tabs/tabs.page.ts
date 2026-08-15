@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonTabs,
   IonTabBar,
@@ -7,7 +7,8 @@ import {
   IonLabel,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { home, barbell, statsChart } from 'ionicons/icons';
+import { home, barbell, statsChart, people } from 'ionicons/icons';
+import { AuthService } from '../data/auth.service';
 
 @Component({
   selector: 'app-tabs',
@@ -22,18 +23,26 @@ import { home, barbell, statsChart } from 'ionicons/icons';
         </ion-tab-button>
         <ion-tab-button tab="routines">
           <ion-icon name="barbell"></ion-icon>
-          <ion-label>Mi Rutina</ion-label>
+          <ion-label>Rutinas</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="progress">
           <ion-icon name="stats-chart"></ion-icon>
           <ion-label>Progreso</ion-label>
         </ion-tab-button>
+        @if (auth.isAuthenticated()) {
+          <ion-tab-button tab="community">
+            <ion-icon name="people"></ion-icon>
+            <ion-label>Amigos</ion-label>
+          </ion-tab-button>
+        }
       </ion-tab-bar>
     </ion-tabs>
   `,
 })
 export class TabsPage {
+  readonly auth = inject(AuthService);
+
   constructor() {
-    addIcons({ home, barbell, statsChart });
+    addIcons({ home, barbell, statsChart, people });
   }
 }

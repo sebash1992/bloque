@@ -15,11 +15,26 @@
     <p class="section-label">⚡ Rutina activa</p>
     <button class="routine-card surface-card emerald-border" (click)="open(active)">
       <div class="info">
-        <h2>{{ active.name }}</h2>
+        <h2>{{ active.icon }} {{ active.name }}</h2>
         <p>Frecuencia: {{ active.frequency }}</p>
         <span class="tag">EN PROGRESO</span>
       </div>
       <ion-icon name="chevron-forward" class="emerald"></ion-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="available.length">
+    <p class="section-label">📥 Disponibles</p>
+    <button
+      *ngFor="let r of available"
+      class="routine-card surface-card"
+      (click)="open(r)"
+    >
+      <div class="info">
+        <h2>{{ r.icon }} {{ r.name }}</h2>
+        <p>Frecuencia: {{ r.frequency }}</p>
+      </div>
+      <ion-icon name="chevron-forward"></ion-icon>
     </button>
   </ng-container>
 

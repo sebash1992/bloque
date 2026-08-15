@@ -37,7 +37,18 @@
       "Bash(open ios/App/App.xcodeproj)",
       "Bash(osascript -e 'tell application \"Xcode\" to get name of every window')",
       "Bash(xcrun xctrace *)",
-      "Bash(xcrun devicectl *)"
+      "Bash(xcrun devicectl *)",
+      "Bash(curl -s -o /dev/null http://localhost:8100)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8100)",
+      "Bash(echo \"UP $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:8100\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@supabase/supabase-js/package.json'\\).version\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\).dependencies; Object.keys\\(p\\).filter\\(k=>k.includes\\('capacitor'\\)\\).forEach\\(k=>console.log\\(k, p[k]\\)\\)\")",
+      "Bash(node -e \"try{console.log\\(require\\('./node_modules/@capacitor/browser/package.json'\\).version\\)}catch\\(e\\){console.log\\('NO - need install'\\)}\")",
+      "Bash(node -e \"console.log\\('browser', require\\('./node_modules/@capacitor/browser/package.json'\\).version\\)\")",
+      "Bash(node -e \"try{console.log\\(require\\('./node_modules/@capacitor-community/apple-sign-in/package.json'\\).version\\)}catch\\(e\\){console.log\\('FAIL',e.message\\)}\")",
+      "Bash(curl -sI \"https://ktulcczkkdygrdeznunq.supabase.co/storage/v1/object/public/bloque-legal/support.html\")",
+      "Bash(curl -s \"https://ktulcczkkdygrdeznunq.supabase.co/storage/v1/object/public/bloque-legal/support.html\")",
+      "Bash(gh auth *)"
     ]
   }
 }

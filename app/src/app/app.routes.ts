@@ -34,6 +34,13 @@ export const routes: Routes = [
             (m) => m.ProgressDetailPage
           ),
       },
+      {
+        path: 'community',
+        loadComponent: () =>
+          import('./pages/community/community.page').then(
+            (m) => m.CommunityPage
+          ),
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

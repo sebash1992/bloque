@@ -35,6 +35,7 @@ import { WorkoutService } from '../../data/workout.service';
 })
 export class RoutinesPage implements OnInit {
   active?: Routine;
+  available: Routine[] = [];
   history: Routine[] = [];
 
   constructor(private svc: WorkoutService, private router: Router) {
@@ -67,7 +68,8 @@ export class RoutinesPage implements OnInit {
   private async load() {
     const all = await this.svc.getRoutines();
     this.active = all.find((r) => r.isActive);
-    this.history = all.filter((r) => !r.isActive);
+    this.available = all.filter((r) => !r.isActive && !r.finishedAt);
+    this.history = all.filter((r) => !r.isActive && !!r.finishedAt);
   }
 
   open(routine: Routine) {

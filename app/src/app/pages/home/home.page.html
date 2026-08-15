@@ -1,7 +1,15 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <header class="greeting">
-    <h1>¡Hola! 👋</h1>
-    <p>Listo para tu sesión de hoy.</p>
+    <div class="greeting-text">
+      <h1>¡Hola! 👋</h1>
+      <p>Listo para tu sesión de hoy.</p>
+    </div>
+    <button class="profile-btn" (click)="onProfile()">
+      <span *ngIf="auth.isAuthenticated()" class="username">
+        {{ auth.username() }}
+      </span>
+      <ion-icon *ngIf="!auth.isAuthenticated()" name="person-circle-outline"></ion-icon>
+    </button>
   </header>
 
   <p class="section-label">📅 Esta semana</p>
@@ -61,3 +69,5 @@
     </p>
   </div>
 </ion-content>
+
+<app-login-sheet [isOpen]="loginOpen" (closed)="loginOpen = false"></app-login-sheet>

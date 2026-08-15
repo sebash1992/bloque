@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Comunidad ⚡</ion-title>
+    <button slot="end" class="me" (click)="editUsername()">
+      {{ auth.username() }}
+      <ion-icon name="create-outline"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="load($any($event))">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <p class="section-label">📥 Rutinas recibidas</p>
+
+  <div
+    *ngFor="let r of inbox"
+    class="received surface-card emerald-border"
+  >
+    <div class="info">
+      <h2>{{ r.routine.icon }} {{ r.routine.name }}</h2>
+      <p>Enviado por: {{ r.fromUsername }}</p>
+      <button class="more" (click)="openActions(r)">⋯ Más opciones</button>
+    </div>
+    <button class="import" (click)="importRoutine(r)">Importar</button>
+  </div>
+
+  <div class="empty" *ngIf="!loading && !inbox.length">
+    No tenés rutinas nuevas por importar.
+  </div>
+
+  <p class="section-label">👥 Mis contactos</p>
+
+  <div *ngFor="let c of contacts" class="contact surface-card">
+    <div class="avatar">{{ c.icon }}</div>
+    <div class="info">
+      <h3>{{ c.username }}</h3>
+      <p>{{ c.subtitle }}</p>
+    </div>
+    <ion-icon name="link" [class.linked]="c.linked"></ion-icon>
+  </div>
+
+  <div class="empty" *ngIf="!loading && !contacts.length">
+    Todavía no tenés contactos. Cuando alguien te comparta una rutina, aparece acá.
+  </div>
+
+  <p class="section-label">⚙️ Cuenta</p>
+  <div class="account-actions">
+    <button class="logout" (click)="signOut()">Cerrar sesión</button>
+    <button class="delete" (click)="confirmDeleteAccount()">
+      Eliminar cuenta
+    </button>
+  </div>
+  <div class="footer-space"></div>
+</ion-content>
